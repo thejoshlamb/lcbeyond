@@ -1,0 +1,13 @@
+<h2> CHEAP HOOCH </h2>
+<% @products['result'].each do |product| %>
+<div>
+	<%= link_to product['name'], product_path(product['id']) %>
+</div>
+<div>normal price of this product: <%= number_to_currency(product['price_in_cents']/100) %></div>
+<div>
+	savings on this product: <%= number_to_currency(product['limited_time_offer_savings_in_cents']/100) %>
+</div>
+<% end %>
+<%= @products['pager']['current_page'] %> of <%= @products['pager']['final_page'] %> pages
+
+<%= link_to "Home", root_path %>

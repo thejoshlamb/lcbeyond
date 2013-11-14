@@ -1,0 +1,10 @@
+<% @stores['result'].each do |store| %>
+<div>
+	<%= link_to store['name'], "http://www.lcbo.com/lcbo-ear/jsp/storeinfo.jsp?language=EN&STORE=#{store['id']}" %>
+	<% if open(store) %>
+		<div>Closes in <%= timeleft(store) %></div>
+	<% else  %>
+		<div>Closed</div>
+	<% end  %>
+</div>
+<% end %>

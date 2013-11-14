@@ -1,0 +1,10 @@
+<h1>why not try a...<h1>
+	<div>
+	<%= image_tag @feature['image_thumb_url'] %>
+	<%= @feature['name'] %>
+	<%= number_to_currency(@feature['price_in_cents']) %>
+	<%= @feature['id'] %>
+</div>
+
+	<%= link_to "Products", products_path %>
+	<%= link_to "Stores", stores_path %>
