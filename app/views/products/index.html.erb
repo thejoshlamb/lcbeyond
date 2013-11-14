@@ -3,11 +3,25 @@
 <div>
 	<%= link_to product['name'], product_path(product['id']) %>
 </div>
-<div>normal price of this product: <%= number_to_currency(product['price_in_cents']/100) %></div>
+<div>normal price of this product: <%= number_to_currency(product['regular_price_in_cents']/100) %></div>
 <div>
-	savings on this product: <%= number_to_currency(product['limited_time_offer_savings_in_cents']/100) %>
+	savings on this item: <%= number_to_currency(product['limited_time_offer_savings_in_cents']/100) %>
+</div>
+<div>
+	savings % = <%=  (product['limited_time_offer_savings_in_cents'].to_f / product['regular_price_in_cents'].to_f) %>
+</div>
+<div>
+	savings per ml: <%= number_to_currency( product['limited_time_offer_savings_in_cents'].to_f/product['volume_in_milliliters'].to_f ) %>
+</div>
+<div>
+	savings per ml of alcohol: <%= ( product['limited_time_offer_savings_in_cents'].to_f/(product['alcohol_content']/100 *product['volume_in_milliliters']).to_f ) %>
 </div>
 <% end %>
 <%= @products['pager']['current_page'] %> of <%= @products['pager']['final_page'] %> pages
+
+<%= link_to 'prev page', products_path( page: @products['pager']['current_page']-1 ) unless @products['pager']['current_page'] < 1 %>
+<%= link_to 'next page', products_path( page: @products['pager']['current_page']+1 ) unless @products['pager']['current_page'] >= @products['pager']['final_page']  %>
+
+
 
 <%= link_to "Home", root_path %>

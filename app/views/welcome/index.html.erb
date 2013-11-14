@@ -2,7 +2,7 @@
 	<div>
 	<%= image_tag @feature['image_thumb_url'] %>
 	<%= @feature['name'] %>
-	<%= number_to_currency(@feature['price_in_cents']) %>
+	<%= number_to_currency(@feature['price_in_cents']/100) %>
 	<%= @feature['id'] %>
 </div>
 
